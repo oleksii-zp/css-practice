@@ -1,0 +1,239 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    /*margin: 48px;*/
+    margin: 0;
+    /*background: #000;*/
+    background: linear-gradient(#000 70%, #999);
+    background-attachment: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/*HEADER SECTION*/
+
+div#banner {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+div#banner>#banner_backdrop {
+    position: relative;
+    background: url('./pics/header9.jpg') repeat-x;
+    background-position: left center;
+    width: 200%;
+    height: 200px;
+    animation: backdrop_roll linear 15s infinite;
+    animation-direction: alternate;
+}
+
+@keyframes backdrop_roll {
+    from {
+        right: 0px;
+    }
+    to {
+        right: 320px;
+    }
+}
+
+div#banner>#banner_content {
+    position: relative;
+    width: 100%;
+    height: 160px;
+    margin: 20px auto;
+    top: -200px;
+    color: #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    text-align: center;
+}
+
+#wss {
+    opacity: 0;
+    transition: opacity 1.0s linear 0s;
+    font-size: 82px;
+    font-weight: bold;
+    text-shadow: 2px 1px 5px gray;
+    color: #e0e4cc;
+    background: rgba(105, 105, 105, 0.5);
+    padding: 5px 20px;
+    border-radius: 5px;
+}
+
+#dark-line {
+    position: absolute;
+    height: 50%;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+    width: 100%;
+}
+
+/* PHOTO SECTION */
+
+.card-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.flip3d {
+    position: relative;
+    width: 25%;
+    height: auto;
+    margin: 10px;
+}
+
+.flip3d>.front {
+    position: relative;
+    transform: perspective(600px) rotateY(0deg);
+    width: 100%;
+    backface-visibility: hidden;
+    transition: transform .5s linear 0s;
+}
+
+.flip3d>.back {
+    position: absolute;
+    transform: perspective(600px) rotateY(180deg);
+    width: 100%;
+    backface-visibility: hidden;
+    transition: transform .5s linear 0s;
+}
+
+.flip3d:hover>.front {
+    transform: perspective(600px) rotateY(-180deg);
+}
+
+.flip3d:hover>.back {
+    transform: perspective(600px) rotateY(0deg);
+}
+
+.flip3d img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+
+
+.flip3d figcaption {
+    text-align: center;
+    color: white;
+  border-bottom-width: 2px;
+    border-bottom-style: solid;
+     border-bottom-color: transparent;
+    border-radius: 10%;
+    transition: all 1s linear 0.2s;
+}
+
+.flip3d:hover figcaption {
+  border-bottom-color: rgba(255, 255, 255, 0.8);
+}
+
+figure {
+    margin: 0;
+}
+
+/*ZOOM CARDS*/
+
+.zoom-cards {
+    width: 25%;
+    margin: 10px;
+}
+
+.small-img {
+  /*opacity: 0.5;*/
+  filter: blur(3px) grayscale(70%);
+    width: 100%;
+    border-radius: 5px;
+    transition: filter 0.3s linear 0s;
+}
+
+.small-img:hover {
+  filter: blur(0px) grayscale(0%);   
+}
+
+/*Flex box*/
+
+.flex-div {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 10px;
+}
+
+.flex-div * {
+    text-align: center;
+}
+
+.flex-div > header, nav, main, aside, footer {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    margin: 5px;
+    padding: 20px;
+}
+.flex-div header {
+    order: 1;
+    height: 100px;
+    flex: 0 1 100%;
+}
+
+.flex-div nav {
+    order: 2;
+    flex: 1 1 20%;
+    /*min-width: 200px;*/
+}
+
+.flex-div main {
+    order: 3;
+    min-height: 250px;
+    /*min-width: 500px;*/
+    flex: 8 500px;
+}
+
+.flex-div aside {
+    order: 4;
+    flex: 1 2 25%;
+    /*min-width: 200px;*/
+}
+
+.flex-div footer {
+    order: 5;
+    height: 100px;
+    flex: 0 1 100%;
+}
+
+@media screen and (max-width: 768px) {
+    .flip3d {
+        width: 45%;
+    }
+    #wss {
+        font-size: 56px;
+    }
+
+    .zoom-cards {
+    width: 45%;
+}
+    
+}
+
+@media screen and (max-width: 576px) {
+    .flip3d {
+        width: 90%;
+    }
+    #wss {
+        font-size: 36px;
+    }
+        .zoom-cards {
+    width: 90%;
+}
+}
+
+h1:after {
+    content: ' Size page';
+}
